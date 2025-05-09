@@ -152,7 +152,8 @@ const NewAppointment = () => {
                         <SelectValue placeholder="Todas las especialidades" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Todas las especialidades</SelectItem>
+                        {/* Corregido: Se ha asignado un valor no vacío al primer item */}
+                        <SelectItem value="all">Todas las especialidades</SelectItem>
                         {specialties.map((specialty) => (
                           <SelectItem key={specialty} value={specialty}>
                             {specialty}
@@ -315,7 +316,7 @@ const NewAppointment = () => {
                               mode="single"
                               selected={selectedDate}
                               onSelect={setSelectedDate}
-                              className="rounded-md border"
+                              className="rounded-md border pointer-events-auto"
                               disabled={(date) => {
                                 // Deshabilitar fechas pasadas y fines de semana
                                 const today = new Date();

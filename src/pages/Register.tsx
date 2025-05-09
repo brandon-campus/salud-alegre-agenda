@@ -16,6 +16,7 @@ const Register = () => {
   const [searchParams] = useSearchParams();
   const userTypeFromUrl = searchParams.get("type");
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedSpecialty, setSelectedSpecialty] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>, userType: string) => {
     e.preventDefault();
@@ -138,11 +139,12 @@ const Register = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="especialidad">Especialidad</Label>
-                  <Select required>
+                  <Select value={selectedSpecialty} onValueChange={setSelectedSpecialty}>
                     <SelectTrigger id="especialidad">
                       <SelectValue placeholder="Selecciona especialidad" />
                     </SelectTrigger>
                     <SelectContent>
+                      {/* Corregido: Añadidos valores para cada SelectItem */}
                       <SelectItem value="medicina-general">Medicina General</SelectItem>
                       <SelectItem value="cardiologia">Cardiología</SelectItem>
                       <SelectItem value="dermatologia">Dermatología</SelectItem>
